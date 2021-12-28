@@ -90,6 +90,11 @@ const ArtilleryScenarioChart: React.FC<Props> = ({ phases }) => {
     }
   });
 
-  return <ReactECharts option={options} />;
+  return (
+    <ReactECharts
+      option={options}
+      style={{ width: '100%', maxWidth: '50vw', height: '90%', maxHeight: '50vh' }}
+    />
+  );
 };
 export default ArtilleryScenarioChart;

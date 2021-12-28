@@ -1,5 +1,13 @@
 import React from 'react';
-import ReactFlow, { Background, Controls, Elements, FlowElement, Handle, MiniMap, Position } from 'react-flow-renderer';
+import ReactFlow, {
+  Background,
+  Controls,
+  Elements,
+  FlowElement,
+  Handle,
+  MiniMap,
+  Position,
+} from 'react-flow-renderer';
 
 type ArtilleryCustomNodeComponentProps = {
   url?: string;
@@ -38,7 +46,7 @@ const elements: Elements<ArtilleryCustomNodeComponentProps> = [
   {
     id: '2',
     data: { url: '/product/{{ productId }}/details', method: 'GET' },
-    position: { x: 100, y: 150 },
+    position: { x: 100, y: 220 },
     type: 'special',
   },
   { id: 'e1-2', source: '1', target: '2', animated: true, type: 'special' },
@@ -62,7 +70,10 @@ const flowStyles = { height: 1000 };
 
 type HTTPMethod = 'GET' | 'PUT' | 'POST' | 'DELETE' | 'PATCH';
 
-const HTTPMethodLabel: React.FC<{ method: HTTPMethod; className: string }> = ({ method, className }) => {
+const HTTPMethodLabel: React.FC<{ method: HTTPMethod; className: string }> = ({
+  method,
+  className,
+}) => {
   const classes: { [key in HTTPMethod]?: string } = {
     GET: 'bg-green-500',
     POST: 'bg-blue-500',
@@ -71,13 +82,19 @@ const HTTPMethodLabel: React.FC<{ method: HTTPMethod; className: string }> = ({ 
   };
 
   return (
-    <div className={className + ' ' + 'w-fit rounded-sm h-fit text-white text-xs' + ' ' + classes[method]}>
+    <div
+      className={
+        className + ' ' + 'w-fit rounded-sm h-fit text-white text-xs' + ' ' + classes[method]
+      }
+    >
       {method}
     </div>
   );
 };
 
-const CustomNodeComponent: React.FC<FlowElement<ArtilleryCustomNodeComponentProps>> = ({ data }) => {
+const CustomNodeComponent: React.FC<FlowElement<ArtilleryCustomNodeComponentProps>> = ({
+  data,
+}) => {
   return (
     <div className="border p-1 rounded min-w-full min-h-32 border-black">
       <Handle type="target" position={Position.Top} />
